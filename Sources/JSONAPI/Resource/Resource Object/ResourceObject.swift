@@ -120,6 +120,10 @@ public protocol IdentifiableResourceObjectType: ResourceObjectType, Relatable wh
 /// "Resource Object."
 /// See https://jsonapi.org/format/#document-resource-objects
 public struct ResourceObject<Description: JSONAPI.ResourceObjectDescription, MetaType: JSONAPI.Meta, LinksType: JSONAPI.Links, EntityRawIdType: JSONAPI.MaybeRawId>: ResourceObjectType {
+    public static func == (lhs: ResourceObject<Description, MetaType, LinksType, EntityRawIdType>, rhs: ResourceObject<Description, MetaType, LinksType, EntityRawIdType>) -> Bool {
+        lhs.id == rhs.id
+    }
+
 
     public typealias Meta = MetaType
     public typealias Links = LinksType

@@ -15,7 +15,7 @@ public extension JSONAPI.ResourceObject {
     /// - parameters:
     ///     - replacement: A function that takes the existing `attributes` and returns the replacement.
     func replacingAttributes(_ replacement: (Description.Attributes) -> Description.Attributes) -> Self {
-        return Self(id: id,
+        return Self(id: .init(rawValue: 1 as! EntityRawIdType),
                     attributes: replacement(attributes),
                     relationships: relationships,
                     meta: meta,
@@ -32,7 +32,7 @@ public extension JSONAPI.ResourceObject {
     func tappingAttributes(_ tap: (inout Description.Attributes) -> Void) -> Self {
         var newAttributes = attributes
         tap(&newAttributes)
-        return Self(id: id,
+        return Self(id: .init(rawValue: 1 as! EntityRawIdType),
                     attributes: newAttributes,
                     relationships: relationships,
                     meta: meta,
@@ -48,7 +48,7 @@ public extension JSONAPI.ResourceObject {
     /// - parameters:
     ///     - replacement: A function that takes the existing relationships and returns the replacement.
     func replacingRelationships(_ replacement: (Description.Relationships) -> Description.Relationships) -> Self {
-        return Self(id: id,
+        return Self(id: .init(rawValue: 1 as! EntityRawIdType),
                     attributes: attributes,
                     relationships: replacement(relationships),
                     meta: meta,
@@ -65,7 +65,7 @@ public extension JSONAPI.ResourceObject {
     func tappingRelationships(_ tap: (inout Description.Relationships) -> Void) -> Self {
         var newRelationships = relationships
         tap(&newRelationships)
-        return Self(id: id,
+        return Self(id: .init(rawValue: 1 as! EntityRawIdType),
                     attributes: attributes,
                     relationships: newRelationships,
                     meta: meta,
